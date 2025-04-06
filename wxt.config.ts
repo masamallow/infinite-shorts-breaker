@@ -5,7 +5,7 @@ export default defineConfig({
   manifest: {
     name: 'Infinite Scroll Breaker',
     version: '0.1.0',
-    description: 'Stops infinite scrolling on YouTube Shorts',
+    description: 'Stop infinite scrolling on YouTube Shorts',
   },
   srcDir: "src",
 });

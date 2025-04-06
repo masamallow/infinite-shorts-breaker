@@ -1,6 +1,7 @@
 export default defineContentScript({
-  matches: ['*://*.google.com/*'],
+  matches: ['*://www.youtube.com/shorts/*'],
+  runAt: 'document_idle', // TODO temp
   main() {
-    console.log('Hello content.');
+    console.log('Hello from content script!');
   },
 });
