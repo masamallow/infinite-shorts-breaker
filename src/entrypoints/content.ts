@@ -44,7 +44,7 @@ export default defineContentScript({
     }
 
     function triggerStop(reason: string) {
-      alert(`Infinite Scroll Breaker: ${reason}`);
+      alert(`Infinite Shorts Breaker: ${reason}`);
       cleanup();
       window.location.href = 'https://www.youtube.com/';
     }

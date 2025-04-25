@@ -1,1 +1,1 @@
-# Infinite Scroll Breaker
+# Infinite Shorts Breaker
