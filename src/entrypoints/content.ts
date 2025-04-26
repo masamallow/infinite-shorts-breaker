@@ -8,20 +8,20 @@ export default defineContentScript({
     console.log('[ContentScript] YouTube Shorts content script loaded.');
 
     let started = false;
-    let scrollLimit = 5;
-    let timeLimit = 5;
+    let maxViewLimit = 5;
+    let maxTimeLimitInMinutes = 5;
     let viewCount = 0;
     let timerId: number | undefined;
 
-    chrome.storage.local.get(['scrollLimit', 'timeLimit'], res => {
-      scrollLimit = res.scrollLimit ?? scrollLimit;
-      timeLimit = res.timeLimit ?? timeLimit;
+    chrome.storage.local.get(['viewLimit', 'timeLimit'], res => {
+      maxViewLimit = res.viewLimit ?? maxViewLimit;
+      maxTimeLimitInMinutes = res.timeLimit ?? maxTimeLimitInMinutes;
     });
 
     function startTimer() {
       const start = Date.now();
       timerId = window.setInterval(() => {
-        if ((Date.now() - start) >= timeLimit * 60_000) {
+        if ((Date.now() - start) >= maxTimeLimitInMinutes * 60_000) {
           triggerStop('Time limit exceeded');
         }
       }, 10_000);
@@ -41,7 +41,7 @@ export default defineContentScript({
 
       viewCount++;
       console.log('[Limiter] viewCount =', viewCount);
-      if (viewCount >= scrollLimit) {
+      if (viewCount > maxViewLimit) {
         triggerStop('Scroll limit exceeded');
       }
     }
@@ -52,7 +52,7 @@ export default defineContentScript({
         duration: 5000,
         style: {
           fontSize: '3em',
-          height: '50px'
+          height: '50px',
         },
       }).showToast();
       cleanup();

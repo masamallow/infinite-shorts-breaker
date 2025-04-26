@@ -1,13 +1,13 @@
 console.log('[Popup] loaded');
 
-const scrollLimitInput = document.getElementById('scrollLimit') as HTMLInputElement;
+const viewLimitInput = document.getElementById('viewLimit') as HTMLInputElement;
 const timeLimitInput = document.getElementById('timeLimit') as HTMLInputElement;
 const saveBtn = document.getElementById('saveBtn') as HTMLButtonElement;
 
 // Load the current settings from Chrome storage
-chrome.storage.local.get(['scrollLimit', 'timeLimit'], (result) => {
-  if (result.scrollLimit !== undefined) {
-    scrollLimitInput.value = String(result.scrollLimit);
+chrome.storage.local.get(['viewLimit', 'timeLimit'], (result) => {
+  if (result.viewLimit !== undefined) {
+    viewLimitInput.value = String(result.viewLimit);
   }
   if (result.timeLimit !== undefined) {
     timeLimitInput.value = String(result.timeLimit);
@@ -15,16 +15,16 @@ chrome.storage.local.get(['scrollLimit', 'timeLimit'], (result) => {
 });
 
 saveBtn.addEventListener('click', async () => {
-  const scrollLimit = Number(scrollLimitInput.value);
+  const viewLimit = Number(viewLimitInput.value);
   const timeLimit = Number(timeLimitInput.value);
 
   // Save the settings
   await chrome.storage.local.set({
-    scrollLimit,
+    viewLimit,
     timeLimit,
   });
 
-  console.log('[Popup] Settings saved', {scrollLimit, timeLimit});
+  console.log('[Popup] Settings saved', {viewLimit, timeLimit});
   const messageContainer = document.getElementById('message');
   if (messageContainer) {
     messageContainer.textContent = 'Settings saved!';
