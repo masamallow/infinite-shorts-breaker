@@ -42,7 +42,7 @@ export default defineContentScript({
       viewCount++;
       console.log('[Limiter] viewCount =', viewCount);
       if (viewCount > maxViewLimit) {
-        triggerStop('Scroll limit exceeded');
+        triggerStop('View limit exceeded');
       }
     }
 
