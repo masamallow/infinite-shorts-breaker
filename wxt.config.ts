@@ -9,4 +9,9 @@ export default defineConfig({
     permissions: ['storage'],
   },
   srcDir: "src",
+  vite: () => ({
+    esbuild: {
+      drop: ['console', 'debugger'],
+    },
+  }),
 });
