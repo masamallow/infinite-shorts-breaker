@@ -6,7 +6,7 @@ export default defineContentScript({
 
     let started = false;
     let scrollLimit = 5;
-    let timeLimit = 10;
+    let timeLimit = 5;
     let viewCount = 0;
     let timerId: number | undefined;
 
