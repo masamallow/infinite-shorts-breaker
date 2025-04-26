@@ -1,3 +1,6 @@
+import Toastify from 'toastify-js';
+import 'toastify-js/src/toastify.css';
+
 export default defineContentScript({
   matches: ['*://www.youtube.com/*'],
   runAt: 'document_start',
@@ -44,7 +47,14 @@ export default defineContentScript({
     }
 
     function triggerStop(reason: string) {
-      alert(`Infinite Shorts Breaker: ${reason}`);
+      Toastify({
+        text: `InfiniteShortsBreaker: ${reason}`,
+        duration: 5000,
+        style: {
+          fontSize: '3em',
+          height: '50px'
+        },
+      }).showToast();
       cleanup();
       window.location.href = 'https://www.youtube.com/';
     }
