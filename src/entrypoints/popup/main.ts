@@ -18,6 +18,19 @@ saveBtn.addEventListener('click', async () => {
   const viewLimit = Number(viewLimitInput.value);
   const timeLimit = Number(timeLimitInput.value);
 
+  if (viewLimit < 1 || timeLimit < 1) {
+    const messageContainer = document.getElementById('message');
+    if (messageContainer) {
+      messageContainer.textContent = 'Please enter valid positive numbers.';
+    } else {
+      const newMessageContainer = document.createElement('div');
+      newMessageContainer.id = 'message';
+      newMessageContainer.textContent = 'Please enter valid positive numbers.';
+      document.body.appendChild(newMessageContainer);
+    }
+    return;
+  }
+
   // Save the settings
   await chrome.storage.local.set({
     viewLimit,
