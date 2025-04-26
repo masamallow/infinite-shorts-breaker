@@ -16,7 +16,11 @@
   },
   "devDependencies": {
     "@types/chrome": "^0.0.280",
+    "@types/toastify-js": "^1.12.3",
     "typescript": "^5.6.3",
     "wxt": "^0.20.0"
+  },
+  "dependencies": {
+    "toastify-js": "^1.12.0"
   }
 }
