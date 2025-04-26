@@ -50,9 +50,11 @@ export default defineContentScript({
       Toastify({
         text: `InfiniteShortsBreaker: ${reason}`,
         duration: 5000,
+        ariaLive: 'assertive',
         style: {
-          fontSize: '3em',
-          height: '50px',
+          fontSize: 'x-large',
+          alignContent: 'center',
+          padding: '25px',
         },
       }).showToast();
       cleanup();
