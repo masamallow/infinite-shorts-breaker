@@ -4,7 +4,7 @@ import 'toastify-js/src/toastify.css';
 export default defineContentScript({
   matches: ['*://www.youtube.com/*'],
   runAt: 'document_start',
-  async main() {
+  async main(ctx) {
     console.log('[ContentScript] YouTube Shorts content script loaded.');
 
     let started = false;
@@ -20,7 +20,7 @@ export default defineContentScript({
 
     function startTimer() {
       const start = Date.now();
-      timerId = window.setInterval(() => {
+      timerId = ctx.setInterval(() => {
         if ((Date.now() - start) >= maxTimeLimitInMinutes * 60_000) {
           triggerStop('Time limit exceeded');
         }
@@ -64,6 +64,7 @@ export default defineContentScript({
     function cleanup() {
       console.log('[Limiter] cleanup');
       if (timerId !== undefined) {
+        // TODO: Perhaps NOT necessary to clearInterval, because using ctx.setInterval()
         clearInterval(timerId);
         timerId = undefined;
       }
@@ -72,6 +73,6 @@ export default defineContentScript({
     }
 
     // triggered when new/refreshed pages
-    window.addEventListener('yt-navigate-finish', onNavigate);
+    ctx.addEventListener(window, 'yt-navigate-finish', onNavigate);
   },
 });
