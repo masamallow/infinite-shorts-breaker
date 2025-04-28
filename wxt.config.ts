@@ -7,6 +7,9 @@ export default defineConfig({
     version: '0.1.0',
     description: 'Stop infinite scrolling on YouTube Shorts',
     permissions: ['storage'],
+    content_security_policy: {
+      extension_pages: "script-src 'self'; object-src 'self';",
+    }
   },
   srcDir: "src",
   vite: () => ({
