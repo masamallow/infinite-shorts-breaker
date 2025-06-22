@@ -4,7 +4,7 @@ import {defineConfig} from 'wxt';
 export default defineConfig({
   manifest: {
     name: 'Infinite Shorts Breaker: Set viewing and time limits!',
-    version: '0.1.0',
+    version: '0.1.1',
     description: 'Stop infinite scrolling on YouTube Shorts with configurable limits.',
     permissions: ['storage'],
     content_security_policy: {
