@@ -1,0 +1,14 @@
+{
+  "extName": {
+    "message": "Infinite Shorts Breaker: Establece límites de visionado y de tiempo"
+  },
+  "extDescription": {
+    "message": "Detener el desplazamiento infinito en YouTube Shorts con límites configurables."
+  },
+  "toast_time_exceeded": {
+    "message": "Tiempo límite superado"
+  },
+  "toast_view_exceeded": {
+    "message": "Límite de visualización superado"
+  }
+}
