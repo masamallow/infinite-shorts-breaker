@@ -1,0 +1,14 @@
+{
+  "extName": {
+    "message": "Infinite Shorts Breaker (無限ショートブレイカー): 視聴回数と視聴時間の制限を設定しよう"
+  },
+  "extDescription": {
+    "message": "視聴制限を設定し、YouTubeショートの無限スクロールから抜け出します。"
+  },
+  "toast_time_exceeded": {
+    "message": "視聴時間制限を超えました"
+  },
+  "toast_view_exceeded": {
+    "message": "視聴回数制限を超えました"
+  }
+}
