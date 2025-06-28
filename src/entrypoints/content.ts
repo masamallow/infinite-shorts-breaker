@@ -22,7 +22,7 @@ export default defineContentScript({
       const start = Date.now();
       timerId = ctx.setInterval(() => {
         if ((Date.now() - start) >= maxTimeLimitInMinutes * 60_000) {
-          triggerStop('Time limit exceeded');
+          triggerStop(browser.i18n.getMessage("toast_time_exceeded"));
         }
       }, 10_000);
     }
@@ -42,7 +42,7 @@ export default defineContentScript({
       viewCount++;
       console.log('[Limiter] viewCount =', viewCount);
       if (viewCount > maxViewLimit) {
-        triggerStop('View limit exceeded');
+        triggerStop(browser.i18n.getMessage("toast_view_exceeded"));
       }
     }
 

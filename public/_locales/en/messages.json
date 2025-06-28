@@ -1,0 +1,14 @@
+{
+  "extName": {
+    "message": "Infinite Shorts Breaker: Set viewing and time limits!"
+  },
+  "extDescription": {
+    "message": "Stop infinite scrolling on YouTube Shorts with configurable limits."
+  },
+  "toast_time_exceeded": {
+    "message": "Time limit exceeded"
+  },
+  "toast_view_exceeded": {
+    "message": "View limit exceeded"
+  }
+}
