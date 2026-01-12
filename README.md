@@ -13,6 +13,11 @@ Stop endless YouTube Shorts autoplay by setting view-count and watch-time limits
 - Minimal permissions (storage + YouTube) and scoped to Shorts pages
 - Lightweight and fast; no remote code
 
+## Browser Compatibility
+
+- Chrome 88+ (Manifest V3)
+- Firefox (Manifest V3 support required)
+
 ## Install
 
 ### Chrome Web Store (recommended)
