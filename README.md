@@ -27,8 +27,7 @@ Stop endless YouTube Shorts autoplay by setting view-count and watch-time limits
 
 ### Chrome Web Store (recommended)
 
-Install from the Chrome Web Store:
-https://chromewebstore.google.com/detail/aeiaflolhodpikhchopbfgebobofbdjk
+Install from the Chrome Web Store: [Infinite Shorts Breaker](https://chromewebstore.google.com/detail/aeiaflolhodpikhchopbfgebobofbdjk)
 
 ### Manual install (development)
 
