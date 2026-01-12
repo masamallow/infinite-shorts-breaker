@@ -6,7 +6,7 @@ labels: enhancement
 assignees: ""
 ---
 
-Note: External PRs are not accepted at this time. Feature requests are welcome.
+⚠️ **Note:** External PRs are not accepted at this time. Feature requests are welcome.
 
 ## Summary
 <!-- Describe the feature briefly. -->

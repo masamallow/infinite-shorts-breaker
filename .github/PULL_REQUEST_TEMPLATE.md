@@ -1,4 +1,4 @@
-Note: External PRs are not accepted at this time. This template is primarily for maintainer use.
+⚠️ **Note:** External PRs are not accepted at this time. This template is primarily for maintainer use.
 
 ## Summary
 <!-- What does this PR change? -->

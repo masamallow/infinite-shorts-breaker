@@ -6,7 +6,7 @@ labels: bug
 assignees: ""
 ---
 
-Note: External PRs are not accepted at this time. Bug reports are welcome.
+⚠️ **Note:** External PRs are not accepted at this time. Bug reports are welcome.
 
 ## Summary
 <!-- Describe the issue briefly. -->
