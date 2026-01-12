@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="public/infinite-shorts-breaker.svg" alt="Infinite Shorts Breaker logo" width="120">
+</p>
+
 # Infinite Shorts Breaker: YouTube Shorts time & view limits
 
 [![Chrome Web Store](https://img.shields.io/chrome-web-store/v/aeiaflolhodpikhchopbfgebobofbdjk?label=Chrome%20Web%20Store)](https://chromewebstore.google.com/detail/aeiaflolhodpikhchopbfgebobofbdjk)
@@ -60,5 +64,5 @@ Load the extension from `.output/chrome-mv3` in Chrome's developer mode.
 
 ## Contributing
 
-This is a personal project and is not accepting external contributions at this time.
-Bug reports are welcome via GitHub Issues.
+- This is a personal project and is not accepting external contributions at this time.
+- Bug reports are welcome via GitHub Issues.
