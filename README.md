@@ -1,6 +1,7 @@
 # Infinite Shorts Breaker: YouTube Shorts time & view limits
 
 [![Chrome Web Store](https://img.shields.io/chrome-web-store/v/aeiaflolhodpikhchopbfgebobofbdjk?label=Chrome%20Web%20Store)](https://chromewebstore.google.com/detail/aeiaflolhodpikhchopbfgebobofbdjk)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
 Stop endless YouTube Shorts autoplay by setting view-count and watch-time limits. Built as a small, privacy-first Chrome extension.
 
