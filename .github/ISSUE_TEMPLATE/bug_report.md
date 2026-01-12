@@ -9,7 +9,7 @@ assignees: ""
 Note: External PRs are not accepted at this time. Bug reports are welcome.
 
 ## Summary
-Describe the issue briefly.
+<!-- Describe the issue briefly. -->
 
 ## Steps to Reproduce
 1.
@@ -17,10 +17,10 @@ Describe the issue briefly.
 3.
 
 ## Expected Behavior
-What you expected to happen.
+<!-- What you expected to happen. -->
 
 ## Actual Behavior
-What actually happened.
+<!-- What actually happened. -->
 
 ## Environment
 - Browser and version:
@@ -28,7 +28,7 @@ What actually happened.
 - Extension version:
 
 ## Screenshots / Logs
-If applicable, add screenshots or console logs.
+<!-- If applicable, add screenshots or console logs. -->
 
 ## Additional Context
-Any other relevant information.
+<!-- Any other relevant information. -->

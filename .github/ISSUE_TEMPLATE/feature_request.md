@@ -9,16 +9,16 @@ assignees: ""
 Note: External PRs are not accepted at this time. Feature requests are welcome.
 
 ## Summary
-Describe the feature briefly.
+<!-- Describe the feature briefly. -->
 
 ## Problem / Motivation
-What problem does this solve? Who is it for?
+<!-- What problem does this solve? Who is it for? -->
 
 ## Proposed Solution
-Describe the ideal behavior or flow.
+<!-- Describe the ideal behavior or flow. -->
 
 ## Alternatives Considered
-Other approaches or workarounds you considered.
+<!-- Other approaches or workarounds you considered. -->
 
 ## Additional Context
-Links, mockups, or references.
+<!-- Links, mockups, or references. -->
