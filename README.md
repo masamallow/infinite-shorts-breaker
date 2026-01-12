@@ -55,34 +55,6 @@ Load the extension from `.output/chrome-mv3` in Chrome's developer mode.
 - Collected user data: none
 - Settings are stored locally only; nothing is sent externally
 
-## Development
-
-Requirements: Node.js (LTS) and npm
-
-```bash
-npm run dev
-```
-
-## Build / Package
-
-```bash
-npm run build
-npm run zip
-```
-
-Firefox builds are also supported:
-
-```bash
-npm run build:firefox
-npm run zip:firefox
-```
-
-## Tech Stack
-
-- WXT
-- TypeScript
-- Manifest V3
-
 ## Contributing
 
 This is a personal project and is not accepting external contributions at this time.
