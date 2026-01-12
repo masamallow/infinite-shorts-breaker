@@ -10,7 +10,7 @@ Stop endless YouTube Shorts autoplay by setting view-count and watch-time limits
 
 - Set a maximum number of Shorts views and total watch time (minutes)
 - Local-only settings stored in `chrome.storage.local`
-- Minimal permissions (storage + YouTube) and scoped to Shorts pages
+- Minimal permissions (storage); active only on Shorts pages
 - Lightweight and fast; no remote code
 
 ## Browser Compatibility
@@ -26,7 +26,8 @@ Install from the Chrome Web Store:
 https://chromewebstore.google.com/detail/aeiaflolhodpikhchopbfgebobofbdjk
 
 ### Manual install (development)
-```bash
+
+```shell
 # Clone the repository
 git clone https://github.com/masamallow/infinite-shorts-breaker.git
 cd infinite-shorts-breaker
@@ -41,6 +42,7 @@ npm run build
 Load the extension from `.output/chrome-mv3` in Chrome's developer mode.
 
 ## Usage
+
 1. Open the extension popup and set View Limit and Time Limit (minutes)
 2. Watch YouTube Shorts as usual
 3. When a limit is reached, a toast is shown and you are redirected to YouTube Home
