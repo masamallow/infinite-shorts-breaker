@@ -21,7 +21,7 @@ Stop endless YouTube Shorts autoplay by setting view-count and watch-time limits
 ## Browser Compatibility
 
 - Chrome 88+ (Manifest V3)
-- Firefox (Manifest V3 support required)
+- Firefox 109+ (Manifest V3 support required)
 
 ## Install
 
