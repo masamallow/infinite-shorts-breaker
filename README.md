@@ -65,3 +65,12 @@ Load the extension from `.output/chrome-mv3` in Chrome's developer mode.
 
 - This is a personal project and is not accepting external contributions at this time.
 - Bug reports are welcome via GitHub Issues.
+
+## Release Flow
+
+- Commit with Conventional Commits (for example: `feat: ...`, `fix: ...`, `docs: ...`)
+- On each update to `main`, `release-please` updates or creates a release PR
+- Merging that release PR creates:
+  - Version bump in `package.json` and `CHANGELOG.md`
+  - Git tag and GitHub Release with notes generated from Conventional Commits
+  - Build artifact (`.output/*-chrome.zip`) uploaded to the workflow and release assets

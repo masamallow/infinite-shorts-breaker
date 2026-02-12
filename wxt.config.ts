@@ -5,7 +5,6 @@ export default defineConfig({
   manifest: {
     // name: 'Infinite Shorts Breaker: Set viewing and time limits!',
     name: "__MSG_extName__",
-    version: '0.1.2',
     description: "__MSG_extDescription__",
     permissions: ['storage'],
     content_security_policy: {
