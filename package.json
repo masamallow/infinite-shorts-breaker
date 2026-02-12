@@ -2,7 +2,7 @@
   "name": "infinite-shorts-breaker",
   "description": "Stop infinite scrolling on YouTube Shorts",
   "private": true,
-  "version": "0.1.2",
+  "version": "0.2.0",
   "type": "module",
   "scripts": {
     "dev": "wxt",
