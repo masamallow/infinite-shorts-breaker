@@ -11,19 +11,19 @@ Stop endless YouTube Shorts autoplay by setting view-count and watch-time limits
 
 > "Aza Raskin invented the infinite scroll. By his calculation, infinite scrolling costs the world the equivalent of 200,000 life hours per day in wasted productivity."
 
-## Features
+## ✨ Features
 
 - Set a maximum number of Shorts views and total watch time (minutes)
 - Local-only settings stored in `chrome.storage.local`
 - Minimal permissions (storage); active only on Shorts pages
 - Lightweight and fast; no remote code
 
-## Browser Compatibility
+## 🌐 Browser Compatibility
 
 - Chrome 88+ (Manifest V3)
 - Firefox 109+ (Manifest V3 support required)
 
-## Install
+## 📦 Install
 
 ### Chrome Web Store (recommended)
 
@@ -45,23 +45,23 @@ npm run build
 
 Load the extension from `.output/chrome-mv3` in Chrome's developer mode.
 
-## Usage
+## ▶️ Usage
 
 1. Open the extension popup and set View Limit and Time Limit (minutes)
 2. Watch YouTube Shorts as usual
 3. When a limit is reached, a toast is shown and you are redirected to YouTube Home
 
-## Permissions
+## 🔐 Permissions
 
 - `storage`: store view/time limits locally
 - `https://www.youtube.com/*`: detect Shorts pages and apply limits
 
-## Privacy
+## 🛡️ Privacy
 
 - Collected user data: none
 - Settings are stored locally only; nothing is sent externally
 
-## Contributing
+## 🤝 Contributing
 
 - This is a personal project and is not accepting external contributions at this time.
 - Bug reports are welcome via GitHub Issues.
