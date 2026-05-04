@@ -18,5 +18,7 @@
       ],
       "groupName": "github-actions"
     }
-  ]
+  ],
+  "timezone": "Asia/Tokyo",
+  "schedule": ["* * * * 0,6"]
 }
