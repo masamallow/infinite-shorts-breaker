@@ -1,5 +1,25 @@
-import Toastify from 'toastify-js';
-import 'toastify-js/src/toastify.css';
+function showToast(text: string, durationMs = 5000) {
+  const toast = document.createElement('div');
+  toast.setAttribute('role', 'alert');
+  toast.setAttribute('aria-live', 'assertive');
+  toast.textContent = text;
+  Object.assign(toast.style, {
+    position: 'fixed',
+    top: '15px',
+    right: '15px',
+    padding: '25px',
+    color: '#ffffff',
+    background: 'linear-gradient(135deg, #73a5ff, #5477f5)',
+    boxShadow: '0 3px 6px -1px rgba(0, 0, 0, 0.12), 0 10px 36px -4px rgba(77, 96, 232, 0.3)',
+    borderRadius: '2px',
+    fontSize: 'x-large',
+    maxWidth: 'calc(50% - 20px)',
+    zIndex: '2147483647',
+    pointerEvents: 'none',
+  } satisfies Partial<CSSStyleDeclaration>);
+  document.body.appendChild(toast);
+  setTimeout(() => toast.remove(), durationMs);
+}
 
 export default defineContentScript({
   matches: ['*://www.youtube.com/*'],
@@ -47,16 +67,7 @@ export default defineContentScript({
     }
 
     function triggerStop(reason: string) {
-      Toastify({
-        text: `InfiniteShortsBreaker: ${reason}`,
-        duration: 5000,
-        ariaLive: 'assertive',
-        style: {
-          fontSize: 'x-large',
-          alignContent: 'center',
-          padding: '25px',
-        },
-      }).showToast();
+      showToast(`InfiniteShortsBreaker: ${reason}`);
       cleanup();
       window.location.href = 'https://www.youtube.com/';
     }
