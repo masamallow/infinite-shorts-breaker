@@ -11,6 +11,14 @@ export default defineConfig({
       extension_pages: "script-src 'self'; object-src 'self';",
     },
     default_locale: 'en',
+    // Required for Popover API (showPopover) and Promise-based chrome.storage.
+    minimum_chrome_version: '114',
+    browser_specific_settings: {
+      // For Firefox (Gecko engine)
+      gecko: {
+        strict_min_version: '125.0',
+      },
+    },
   },
   srcDir: "src",
   vite: () => ({
