@@ -16,6 +16,11 @@
     "zip": "wxt zip",
     "zip:firefox": "wxt zip -b firefox",
     "compile": "tsc --noEmit",
+    "fmt": "biome format --write",
+    "lint": "biome lint",
+    "check": "biome check",
+    "check:fix": "biome check --write",
+    "check:ci": "biome ci",
     "postinstall": "wxt prepare"
   },
   "devDependencies": {
