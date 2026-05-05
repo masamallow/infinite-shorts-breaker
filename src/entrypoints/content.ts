@@ -1,9 +1,22 @@
-import Toastify from 'toastify-js';
-import 'toastify-js/src/toastify.css';
+import './content/style.css';
+
+const PENDING_TOAST_TTL_MS = 5 * 60_000;
+
+type PendingToast = { reason: string; expiresAt: number };
+
+function isPendingToast(v: unknown): v is PendingToast {
+  return (
+    typeof v === 'object' &&
+    v !== null &&
+    typeof (v as { reason?: unknown }).reason === 'string' &&
+    typeof (v as { expiresAt?: unknown }).expiresAt === 'number'
+  );
+}
 
 export default defineContentScript({
   matches: ['*://www.youtube.com/*'],
   runAt: 'document_start',
+  cssInjectionMode: 'ui',
   async main(ctx) {
     console.log('[ContentScript] YouTube Shorts content script loaded.');
 
@@ -17,6 +30,45 @@ export default defineContentScript({
       maxViewLimit = res.viewLimit ?? maxViewLimit;
       maxTimeLimitInMinutes = res.timeLimit ?? maxTimeLimitInMinutes;
     });
+
+    consumePendingToast();
+
+    async function showToast(text: string, durationMs = 5000) {
+      const ui = await createShadowRootUi(ctx, {
+        name: 'isb-toast',
+        position: 'inline',
+        anchor: 'body',
+        isolateEvents: true,
+        onMount(container) {
+          const el = document.createElement('div');
+          el.className = 'toast';
+          el.setAttribute('role', 'alert');
+          el.setAttribute('aria-live', 'assertive');
+          el.popover = 'manual';
+          el.textContent = text; // As a best practice to prevent the creation of XSS injection vectors.
+          container.appendChild(el);
+          el.showPopover();
+        },
+      });
+      ui.mount();
+      ctx.setTimeout(() => ui.remove(), durationMs);
+    }
+
+    async function consumePendingToast() {
+      // Wait for body before showToast tries to anchor to it (runAt: 'document_start').
+      if (document.readyState === 'loading') {
+        await new Promise<void>(
+            resolve => document.addEventListener(
+                'DOMContentLoaded', () => resolve(), {once: true}
+            )
+        );
+      }
+      const { pendingToast } = await chrome.storage.local.get('pendingToast');
+      if (pendingToast === undefined) return;
+      await chrome.storage.local.remove('pendingToast');
+      if (!isPendingToast(pendingToast) || pendingToast.expiresAt < Date.now()) return;
+      await showToast(`InfiniteShortsBreaker: ${pendingToast.reason}`);
+    }
 
     function startTimer() {
       const start = Date.now();
@@ -46,17 +98,10 @@ export default defineContentScript({
       }
     }
 
-    function triggerStop(reason: string) {
-      Toastify({
-        text: `InfiniteShortsBreaker: ${reason}`,
-        duration: 5000,
-        ariaLive: 'assertive',
-        style: {
-          fontSize: 'x-large',
-          alignContent: 'center',
-          padding: '25px',
-        },
-      }).showToast();
+    async function triggerStop(reason: string) {
+      await chrome.storage.local.set({
+        pendingToast: { reason, expiresAt: Date.now() + PENDING_TOAST_TTL_MS },
+      });
       cleanup();
       window.location.href = 'https://www.youtube.com/';
     }
