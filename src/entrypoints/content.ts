@@ -1,5 +1,18 @@
 import './content/style.css';
 
+const PENDING_TOAST_TTL_MS = 5 * 60_000;
+
+type PendingToast = { reason: string; expiresAt: number };
+
+function isPendingToast(v: unknown): v is PendingToast {
+  return (
+    typeof v === 'object' &&
+    v !== null &&
+    typeof (v as { reason?: unknown }).reason === 'string' &&
+    typeof (v as { expiresAt?: unknown }).expiresAt === 'number'
+  );
+}
+
 export default defineContentScript({
   matches: ['*://www.youtube.com/*'],
   runAt: 'document_start',
@@ -49,8 +62,8 @@ export default defineContentScript({
       const { pendingToast } = await chrome.storage.local.get('pendingToast');
       if (pendingToast === undefined) return;
       await chrome.storage.local.remove('pendingToast');
-      if (typeof pendingToast !== 'string') return;
-      await showToast(`InfiniteShortsBreaker: ${pendingToast}`);
+      if (!isPendingToast(pendingToast) || pendingToast.expiresAt < Date.now()) return;
+      await showToast(`InfiniteShortsBreaker: ${pendingToast.reason}`);
     }
 
     function startTimer() {
@@ -82,7 +95,9 @@ export default defineContentScript({
     }
 
     async function triggerStop(reason: string) {
-      await chrome.storage.local.set({ pendingToast: reason });
+      await chrome.storage.local.set({
+        pendingToast: { reason, expiresAt: Date.now() + PENDING_TOAST_TTL_MS },
+      });
       cleanup();
       window.location.href = 'https://www.youtube.com/';
     }
