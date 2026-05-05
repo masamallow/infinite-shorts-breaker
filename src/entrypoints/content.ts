@@ -1,31 +1,9 @@
-function showToast(text: string, durationMs = 5000) {
-  const toast = document.createElement('div');
-  toast.setAttribute('role', 'alert');
-  toast.setAttribute('aria-live', 'assertive');
-  toast.textContent = text; // As a best practice to prevent the creation of XSS injection vectors.
-  Object.assign(toast.style, {
-    position: 'fixed',
-    top: '15px',
-    right: '15px',
-    padding: '25px',
-    color: '#ffffff',
-    background: 'linear-gradient(135deg, #73a5ff, #5477f5)',
-    boxShadow: '0 3px 6px -1px rgba(0, 0, 0, 0.12), 0 10px 36px -4px rgba(77, 96, 232, 0.3)',
-    borderRadius: '2px',
-    fontSize: 'x-large',
-    maxWidth: 'calc(50% - 20px)',
-    zIndex: '2147483647',
-    pointerEvents: 'none',
-  } satisfies Partial<CSSStyleDeclaration>);
-  document.body.appendChild(toast);
-
-  // TODO maybe fix; This was set to be discarded upon page transition.
-  setTimeout(() => toast.remove(), durationMs);
-}
+import './content/style.css';
 
 export default defineContentScript({
   matches: ['*://www.youtube.com/*'],
   runAt: 'document_start',
+  cssInjectionMode: 'ui',
   async main(ctx) {
     console.log('[ContentScript] YouTube Shorts content script loaded.');
 
@@ -39,6 +17,27 @@ export default defineContentScript({
       maxViewLimit = res.viewLimit ?? maxViewLimit;
       maxTimeLimitInMinutes = res.timeLimit ?? maxTimeLimitInMinutes;
     });
+
+    async function showToast(text: string, durationMs = 5000) {
+      const ui = await createShadowRootUi(ctx, {
+        name: 'isb-toast',
+        position: 'inline',
+        anchor: 'body',
+        isolateEvents: true,
+        onMount(container) {
+          const el = document.createElement('div');
+          el.className = 'toast';
+          el.setAttribute('role', 'alert');
+          el.setAttribute('aria-live', 'assertive');
+          el.textContent = text; // As a best practice to prevent the creation of XSS injection vectors.
+          container.appendChild(el);
+        },
+      });
+      ui.mount();
+
+      // TODO maybe fix; This was set to be discarded upon page transition.
+      ctx.setTimeout(() => ui.remove(), durationMs);
+    }
 
     function startTimer() {
       const start = Date.now();
@@ -68,8 +67,8 @@ export default defineContentScript({
       }
     }
 
-    function triggerStop(reason: string) {
-      showToast(`InfiniteShortsBreaker: ${reason}`);
+    async function triggerStop(reason: string) {
+      await showToast(`InfiniteShortsBreaker: ${reason}`);
       cleanup();
       window.location.href = 'https://www.youtube.com/';
     }
