@@ -1,6 +1,10 @@
 {
   "name": "infinite-shorts-breaker",
   "description": "Stop infinite scrolling on YouTube Shorts",
+  "packageManager": "pnpm@10.33.2",
+  "engines": {
+    "node": ">=24"
+  },
   "private": true,
   "version": "0.1.2",
   "type": "module",
