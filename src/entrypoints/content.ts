@@ -44,8 +44,10 @@ export default defineContentScript({
           el.className = 'toast';
           el.setAttribute('role', 'alert');
           el.setAttribute('aria-live', 'assertive');
+          el.popover = 'manual';
           el.textContent = text; // As a best practice to prevent the creation of XSS injection vectors.
           container.appendChild(el);
+          el.showPopover();
         },
       });
       ui.mount();

@@ -10,14 +10,16 @@
   --toast-max-width: calc(50% - 20px);
   --toast-font-size: x-large;
   --toast-offset: 15px;
-  --toast-z-index: 2147483647; /* int32 max — sit above host page UI (e.g. YouTube masthead) */
 }
 
 .toast {
   position: fixed;
   top: var(--toast-offset);
   right: var(--toast-offset);
-  z-index: var(--toast-z-index);
+  inset-block-end: auto;
+  inset-inline-start: auto;
+  margin: 0;
+  border: none;
   padding: var(--toast-padding);
   border-radius: var(--toast-radius);
   color: var(--toast-text-color);
