@@ -2,7 +2,7 @@ function showToast(text: string, durationMs = 5000) {
   const toast = document.createElement('div');
   toast.setAttribute('role', 'alert');
   toast.setAttribute('aria-live', 'assertive');
-  toast.textContent = text;
+  toast.textContent = text; // As a best practice to prevent the creation of XSS injection vectors.
   Object.assign(toast.style, {
     position: 'fixed',
     top: '15px',
@@ -18,6 +18,8 @@ function showToast(text: string, durationMs = 5000) {
     pointerEvents: 'none',
   } satisfies Partial<CSSStyleDeclaration>);
   document.body.appendChild(toast);
+
+  // TODO maybe fix; This was set to be discarded upon page transition.
   setTimeout(() => toast.remove(), durationMs);
 }
 
