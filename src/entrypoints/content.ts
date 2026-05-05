@@ -18,6 +18,8 @@ export default defineContentScript({
       maxTimeLimitInMinutes = res.timeLimit ?? maxTimeLimitInMinutes;
     });
 
+    consumePendingToast();
+
     async function showToast(text: string, durationMs = 5000) {
       const ui = await createShadowRootUi(ctx, {
         name: 'isb-toast',
@@ -34,9 +36,21 @@ export default defineContentScript({
         },
       });
       ui.mount();
-
-      // TODO maybe fix; This was set to be discarded upon page transition.
       ctx.setTimeout(() => ui.remove(), durationMs);
+    }
+
+    async function consumePendingToast() {
+      // Wait for body before showToast tries to anchor to it (runAt: 'document_start').
+      if (document.readyState === 'loading') {
+        await new Promise<void>(resolve => {
+          document.addEventListener('DOMContentLoaded', () => resolve(), { once: true });
+        });
+      }
+      const { pendingToast } = await chrome.storage.local.get('pendingToast');
+      if (pendingToast === undefined) return;
+      await chrome.storage.local.remove('pendingToast');
+      if (typeof pendingToast !== 'string') return;
+      await showToast(`InfiniteShortsBreaker: ${pendingToast}`);
     }
 
     function startTimer() {
@@ -68,7 +82,7 @@ export default defineContentScript({
     }
 
     async function triggerStop(reason: string) {
-      await showToast(`InfiniteShortsBreaker: ${reason}`);
+      await chrome.storage.local.set({ pendingToast: reason });
       cleanup();
       window.location.href = 'https://www.youtube.com/';
     }
