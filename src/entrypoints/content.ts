@@ -27,8 +27,12 @@ export default defineContentScript({
 		let timerId: number | undefined;
 
 		chrome.storage.local.get(["viewLimit", "timeLimit"], (res) => {
-			maxViewLimit = res.viewLimit ?? maxViewLimit;
-			maxTimeLimitInMinutes = res.timeLimit ?? maxTimeLimitInMinutes;
+			if (typeof res.viewLimit === "number") {
+				maxViewLimit = res.viewLimit;
+			}
+			if (typeof res.timeLimit === "number") {
+				maxTimeLimitInMinutes = res.timeLimit;
+			}
 		});
 
 		consumePendingToast();
