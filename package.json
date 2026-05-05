@@ -1,32 +1,32 @@
 {
-  "name": "infinite-shorts-breaker",
-  "description": "Stop infinite scrolling on YouTube Shorts",
-  "packageManager": "pnpm@10.33.2",
-  "engines": {
-    "node": ">=24"
-  },
-  "private": true,
-  "version": "0.1.2",
-  "type": "module",
-  "scripts": {
-    "dev": "wxt",
-    "dev:firefox": "wxt -b firefox",
-    "build": "wxt build",
-    "build:firefox": "wxt build -b firefox",
-    "zip": "wxt zip",
-    "zip:firefox": "wxt zip -b firefox",
-    "compile": "tsc --noEmit",
-    "fmt": "biome format --write",
-    "lint": "biome lint",
-    "check": "biome check",
-    "check:fix": "biome check --write",
-    "check:ci": "biome ci",
-    "postinstall": "wxt prepare"
-  },
-  "devDependencies": {
-    "@biomejs/biome": "2.4.14",
-    "@types/chrome": "0.1.40",
-    "typescript": "5.9.3",
-    "wxt": "0.20.25"
-  }
+	"name": "infinite-shorts-breaker",
+	"description": "Stop infinite scrolling on YouTube Shorts",
+	"packageManager": "pnpm@10.33.2",
+	"engines": {
+		"node": ">=24"
+	},
+	"private": true,
+	"version": "0.1.2",
+	"type": "module",
+	"scripts": {
+		"dev": "wxt",
+		"dev:firefox": "wxt -b firefox",
+		"build": "wxt build",
+		"build:firefox": "wxt build -b firefox",
+		"zip": "wxt zip",
+		"zip:firefox": "wxt zip -b firefox",
+		"compile": "tsc --noEmit",
+		"fmt": "biome format --write",
+		"lint": "biome lint",
+		"check": "biome check",
+		"check:fix": "biome check --write",
+		"check:ci": "biome ci",
+		"postinstall": "wxt prepare"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "2.4.14",
+		"@types/chrome": "0.1.40",
+		"typescript": "5.9.3",
+		"wxt": "0.20.25"
+	}
 }
