@@ -57,9 +57,11 @@ export default defineContentScript({
     async function consumePendingToast() {
       // Wait for body before showToast tries to anchor to it (runAt: 'document_start').
       if (document.readyState === 'loading') {
-        await new Promise<void>(resolve => {
-          document.addEventListener('DOMContentLoaded', () => resolve(), { once: true });
-        });
+        await new Promise<void>(
+            resolve => document.addEventListener(
+                'DOMContentLoaded', () => resolve(), {once: true}
+            )
+        );
       }
       const { pendingToast } = await chrome.storage.local.get('pendingToast');
       if (pendingToast === undefined) return;
