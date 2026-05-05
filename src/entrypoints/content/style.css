@@ -13,13 +13,14 @@
 }
 
 .toast {
+  /* The Popover API moves this element to the top layer, so no z-index is needed. */
   position: fixed;
   top: var(--toast-offset);
   right: var(--toast-offset);
-  inset-block-end: auto;
-  inset-inline-start: auto;
-  margin: 0;
-  border: none;
+  inset-block-end: auto; /* override popover UA `inset: 0` */
+  inset-inline-start: auto; /* override popover UA `inset: 0` */
+  margin: 0; /* override popover UA `margin: auto` */
+  border: none; /* override popover UA `border: solid` */
   padding: var(--toast-padding);
   border-radius: var(--toast-radius);
   color: var(--toast-text-color);
