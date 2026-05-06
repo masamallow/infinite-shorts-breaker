@@ -18,7 +18,8 @@ This is a personal project and is not accepting external code contributions at t
 
 - On each update to `main`, `release-please` evaluates the commits since the last release.
 - It creates or updates a release PR (titled like `chore(main): release x.y.z`) when it detects releasable units (`feat`, `fix`, or `deps`).
-- `chore`, `build`, `ci`, `refactor`, and `docs` commits are listed in the resulting `CHANGELOG.md` (with section emojis defined in `release-please-config.json`) but do not on their own trigger a new release.
+- `chore`, `build`, `ci`, `refactor`, and `docs` commits are listed in the resulting `CHANGELOG.md` but do not on their own trigger a new release. See: [release-please-config.json](./release-please-config.json).
+- Markdown-only or template-only changes do not start the release workflow (see `paths-ignore` in [.github/workflows/release.yml](./.github/workflows/release.yml)). Code, config, or workflow changes do.
 - Merging the release PR creates:
   - Version bump in `package.json` and `CHANGELOG.md`
   - Git tag and GitHub Release notes generated from Conventional Commits
@@ -26,7 +27,6 @@ This is a personal project and is not accepting external code contributions at t
 
 ### Operational notes
 
-- **`paths-ignore`**: Markdown-only or template-only changes do not trigger the release workflow. Code, config, or workflow changes do.
 - **Conflict resolution on the release PR**: when the release PR shows as conflicting (typically caused by `chore`-only commits piling up on `main` while the release PR sits open), prefer in this order:
   1. Re-run the `Release` workflow via `workflow_dispatch` (`gh workflow run release.yml`).
   2. If that is a no-op, land any pending releasable change (a real `feat:` / `fix:`) on `main`; the release PR will be force-pushed and the conflict will clear.
