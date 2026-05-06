@@ -27,17 +27,18 @@ This is a personal project and is not accepting external code contributions at t
 
 ### Operational notes
 
-- **Conflict resolution on the release PR**: when the release PR shows as conflicting (typically caused by `chore`-only commits piling up on `main` while the release PR sits open), prefer in this order:
+- **Conflict resolution on the release PR**: when the release PR shows as conflicting — typically caused by non-releasable commits (`chore`, `ci`, `refactor`, etc.) piling up on `main` while the release PR sits open — prefer in this order:
   1. Re-run the `Release` workflow via `workflow_dispatch` (`gh workflow run release.yml`).
   2. If that is a no-op, land any pending releasable change (a real `feat:` / `fix:`) on `main`; the release PR will be force-pushed and the conflict will clear.
   3. As a last resort, close the release PR and delete its branch; `release-please` will recreate it on the next push.
-- **Forcing a release out of `chore`-only history**: append a `Release-As: x.y.z` footer on a (possibly empty) commit pushed to `main`:
+- **Forcing a release with no releasable commits on `main`**: append a `Release-As: x.y.z` footer on a (possibly empty) commit pushed to `main`, then trigger the workflow manually because `paths-ignore` will skip an empty push:
 
   ```bash
   git commit --allow-empty \
     -m "chore: release 0.2.1" \
     -m "Release-As: 0.2.1"
   git push origin main
+  gh workflow run release.yml
   ```
 
 - **Hand-editing a release PR**: edits to the release PR's `CHANGELOG.md` can be overwritten by a subsequent `release-please` force-push. If you do hand-edit, merge the PR promptly afterward.
