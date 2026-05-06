@@ -1,26 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Infinite Shorts Breaker</title>
 </head>
 <body>
-<h1>Infinite Shorts Breaker Settings</h1>
-<img src="/infinite-shorts-breaker.svg" class="logo" alt="infinite-shorts-breaker logo"/>
-<div>
-  <label>
-    View Limit:
-    <input type="number" id="viewLimit" value="5" min="1" step="1"/>
-  </label>
-</div>
-<div>
-  <label>
-    Time Limit (minutes):
-    <input type="number" id="timeLimit" value="5" min="1" step="1"/>
-  </label>
-</div>
-<button id="saveBtn" type="button">Save</button>
-<script type="module" src="main.ts"></script>
+  <main class="app">
+    <header class="app__header">
+      <img src="/infinite-shorts-breaker.svg" alt="" width="32" height="32" />
+      <h1>Infinite Shorts Breaker</h1>
+    </header>
+
+    <form id="settings" class="card">
+      <label class="field">
+        <span class="field__label">View limit</span>
+        <span class="field__control">
+          <input id="viewLimit" type="number" min="1" step="1" value="5" />
+          <span class="field__suffix">views</span>
+        </span>
+      </label>
+
+      <label class="field">
+        <span class="field__label">Time limit</span>
+        <span class="field__control">
+          <input id="timeLimit" type="number" min="1" step="1" value="5" />
+          <span class="field__suffix">minutes</span>
+        </span>
+      </label>
+
+      <button id="saveBtn" type="button" class="btn">Save</button>
+
+      <p id="message" class="message" role="status" aria-live="polite"></p>
+    </form>
+  </main>
+  <script type="module" src="main.ts"></script>
 </body>
 </html>
