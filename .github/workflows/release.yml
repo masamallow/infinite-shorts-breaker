@@ -69,6 +69,7 @@ jobs:
           path: .output/*-chrome.zip
           retention-days: 1
           if-no-files-found: error
+          include-hidden-files: true
 
       - name: Upload release asset
         env:
