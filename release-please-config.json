@@ -3,6 +3,20 @@
 	"release-type": "node",
 	"include-v-in-tag": true,
 	"include-component-in-tag": false,
+	"changelog-sections": [
+		{ "type": "feat", "section": "✨ Features" },
+		{ "type": "fix", "section": "🐛 Bug Fixes" },
+		{ "type": "perf", "section": "⚡ Performance Improvements" },
+		{ "type": "deps", "section": "📦 Dependencies" },
+		{ "type": "revert", "section": "⏪ Reverts" },
+		{ "type": "docs", "section": "📝 Documentation" },
+		{ "type": "build", "section": "🛠️ Build System" },
+		{ "type": "ci", "section": "🤖 Continuous Integration" },
+		{ "type": "chore", "section": "🧹 Miscellaneous Chores" },
+		{ "type": "refactor", "section": "♻️ Code Refactoring" },
+		{ "type": "style", "section": "💄 Styles", "hidden": true },
+		{ "type": "test", "section": "✅ Tests", "hidden": true }
+	],
 	"packages": {
 		".": {
 			"package-name": "infinite-shorts-breaker",
