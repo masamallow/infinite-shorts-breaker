@@ -12,8 +12,8 @@ importers:
         specifier: 2.4.14
         version: 2.4.14
       '@types/chrome':
-        specifier: 0.1.40
-        version: 0.1.40
+        specifier: 0.2.0
+        version: 0.2.0
       typescript:
         specifier: 5.9.3
         version: 5.9.3
@@ -453,8 +453,8 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@types/chrome@0.1.40':
-    resolution: {integrity: sha512-UnfyRAe8ORu9HSuTH0EqyOEUin3JrWW9Nl/gDXezNfTUrfIoxw+WRZgKOxGz0t5BnjbfXBnS2eCYfW2PxH1wcA==}
+  '@types/chrome@0.2.0':
+    resolution: {integrity: sha512-K/i7EKEVSpmyXXjE0ev5oASWBYMY6yM8LFSutG2PkM1DmxJUggZsoaTc0W1RsVwDDKrsZEjpHFAbqqxlRxGsSg==}
 
   '@types/estree@1.0.8':
     resolution: {integrity: sha512-dWHzHa2WqEXI/O1E9OjrocMTKJl2mSrEolh1Iomrv6U+JuNwaHXsXx9bLu5gG7BUWFIN0skIQJQ/L1rIex4X6w==}
@@ -1493,6 +1493,7 @@ packages:
 
   uuid@8.3.2:
     resolution: {integrity: sha512-+NYs2QeMWy+GWFOEm9xnn6HCDp0l7QBD7ml8zLUmJ+93Q5NF0NocErnwkTkXVFNiX3/fpC6afS8Dhb/gz7R7eg==}
+    deprecated: uuid@10 and below is no longer supported.  For ESM codebases, update to uuid@latest.  For CommonJS codebases, use uuid@11 (but be aware this version will likely be deprecated in 2028).
     hasBin: true
 
   vite-node@5.3.0:
@@ -1897,7 +1898,7 @@ snapshots:
   '@rollup/rollup-win32-x64-msvc@4.55.2':
     optional: true
 
-  '@types/chrome@0.1.40':
+  '@types/chrome@0.2.0':
     dependencies:
       '@types/filesystem': 0.0.36
       '@types/har-format': 1.2.16
