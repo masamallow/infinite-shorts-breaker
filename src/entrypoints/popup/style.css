@@ -10,7 +10,6 @@ body {
 	background: var(--color-bg);
 	color: var(--color-text);
 	font-family: var(--font-family);
-	font-feature-settings: var(--font-feature-settings);
 	font-size: var(--font-size-md);
 	line-height: var(--line-height-normal);
 	accent-color: var(--color-accent);

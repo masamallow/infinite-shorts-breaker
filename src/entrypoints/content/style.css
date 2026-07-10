@@ -17,7 +17,7 @@
 		var(--color-toast-bg-from),
 		var(--color-toast-bg-to)
 	);
-	box-shadow: var(--color-toast-shadow);
+	box-shadow: var(--shadow-toast);
 	max-width: calc(50% - 20px);
 	font-size: var(--font-size-lg);
 	pointer-events: none;
