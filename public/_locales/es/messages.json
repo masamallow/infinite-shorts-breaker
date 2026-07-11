@@ -16,5 +16,23 @@
   },
   "popup_settings_saved": {
     "message": "¡Configuración guardada!"
+  },
+  "popup_title": {
+    "message": "Infinite Shorts Breaker"
+  },
+  "popup_view_limit_label": {
+    "message": "Límite de visualizaciones"
+  },
+  "popup_views_unit": {
+    "message": "visualizaciones"
+  },
+  "popup_time_limit_label": {
+    "message": "Límite de tiempo"
+  },
+  "popup_minutes_unit": {
+    "message": "minutos"
+  },
+  "popup_save_button": {
+    "message": "Guardar"
   }
 }
