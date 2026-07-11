@@ -4,7 +4,7 @@ console.log("[Popup] loaded");
 
 const viewLimitInput = document.getElementById("viewLimit") as HTMLInputElement;
 const timeLimitInput = document.getElementById("timeLimit") as HTMLInputElement;
-const saveBtn = document.getElementById("saveBtn") as HTMLButtonElement;
+const settingsForm = document.getElementById("settings") as HTMLFormElement;
 const messageEl = document.getElementById("message") as HTMLParagraphElement;
 
 function setMessage(text: string, state: "success" | "error") {
@@ -21,13 +21,15 @@ chrome.storage.local.get(["viewLimit", "timeLimit"], (result) => {
 	}
 });
 
-saveBtn.addEventListener("click", async () => {
+settingsForm.addEventListener("submit", async (event) => {
+	event.preventDefault();
+
 	const viewLimit = Number(viewLimitInput.value);
 	const timeLimit = Number(timeLimitInput.value);
 
 	if (
-		!Number.isFinite(viewLimit) ||
-		!Number.isFinite(timeLimit) ||
+		!Number.isInteger(viewLimit) ||
+		!Number.isInteger(timeLimit) ||
 		viewLimit < 1 ||
 		timeLimit < 1
 	) {
