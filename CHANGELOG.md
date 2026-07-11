@@ -1,5 +1,29 @@
 # Changelog
 
+## [0.3.0](https://github.com/masamallow/infinite-shorts-breaker/compare/v0.2.0...v0.3.0) (2026-07-11)
+
+
+### ✨ Features
+
+* **popup:** localize the entire interface ([#54](https://github.com/masamallow/infinite-shorts-breaker/issues/54)) ([228e33e](https://github.com/masamallow/infinite-shorts-breaker/commit/228e33eafb8045a9a127c3b196be597b186222d1))
+* **ui:** redesign popup and unify visual styles ([#50](https://github.com/masamallow/infinite-shorts-breaker/issues/50)) ([5f93b85](https://github.com/masamallow/infinite-shorts-breaker/commit/5f93b850b408a9a65c4fbc3e40533fe2f1e2f1d4))
+
+
+### 🐛 Bug Fixes
+
+* **popup:** improve form submission and validation ([#53](https://github.com/masamallow/infinite-shorts-breaker/issues/53)) ([df37271](https://github.com/masamallow/infinite-shorts-breaker/commit/df37271aed0c15184218543befc48f628c3541b9))
+
+
+### 🛠️ Build System
+
+* **deps:** upgrade TypeScript to 6.0.3 ([#57](https://github.com/masamallow/infinite-shorts-breaker/issues/57)) ([f14a72f](https://github.com/masamallow/infinite-shorts-breaker/commit/f14a72ffc171c3edc3c440d82f593447a2bf6e49))
+* migrate to pnpm 11 ([#55](https://github.com/masamallow/infinite-shorts-breaker/issues/55)) ([3180423](https://github.com/masamallow/infinite-shorts-breaker/commit/318042352b74df4c8ae38dfc3fac9fefce8d3ab7))
+
+
+### 🤖 Continuous Integration
+
+* **release:** include hidden files when uploading .output artifact ([#38](https://github.com/masamallow/infinite-shorts-breaker/issues/38)) ([9b76b35](https://github.com/masamallow/infinite-shorts-breaker/commit/9b76b3510941f52783b746d2e2173ca0f4c60e93))
+
 ## [0.2.0](https://github.com/masamallow/infinite-shorts-breaker/compare/v0.1.2...v0.2.0) (2026-05-07)
 
 
