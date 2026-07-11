@@ -114,7 +114,6 @@ export default defineContentScript({
 		function cleanup() {
 			console.log("[Limiter] cleanup");
 			if (timerId !== undefined) {
-				// TODO: Perhaps NOT necessary to clearInterval, because using ctx.setInterval()
 				clearInterval(timerId);
 				timerId = undefined;
 			}
