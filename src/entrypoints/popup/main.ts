@@ -7,6 +7,21 @@ const timeLimitInput = document.getElementById("timeLimit") as HTMLInputElement;
 const settingsForm = document.getElementById("settings") as HTMLFormElement;
 const messageEl = document.getElementById("message") as HTMLParagraphElement;
 
+type PopupMessageKey = "popup_validation_error" | "popup_settings_saved";
+
+function getMessage(key: PopupMessageKey, fallback: string) {
+	return browser.i18n.getMessage(key) || fallback;
+}
+
+const validationErrorMessage = getMessage(
+	"popup_validation_error",
+	"Please enter valid positive integers.",
+);
+const settingsSavedMessage = getMessage(
+	"popup_settings_saved",
+	"Settings saved!",
+);
+
 function setMessage(text: string, state: "success" | "error") {
 	messageEl.textContent = text;
 	messageEl.dataset.state = state;
@@ -33,12 +48,12 @@ settingsForm.addEventListener("submit", async (event) => {
 		viewLimit < 1 ||
 		timeLimit < 1
 	) {
-		setMessage("Please enter valid positive numbers.", "error");
+		setMessage(validationErrorMessage, "error");
 		return;
 	}
 
 	await chrome.storage.local.set({ viewLimit, timeLimit });
 
 	console.log("[Popup] Settings saved", { viewLimit, timeLimit });
-	setMessage("Settings saved!", "success");
+	setMessage(settingsSavedMessage, "success");
 });

@@ -10,5 +10,11 @@
   },
   "toast_view_exceeded": {
     "message": "View limit exceeded"
+  },
+  "popup_validation_error": {
+    "message": "Please enter valid positive integers."
+  },
+  "popup_settings_saved": {
+    "message": "Settings saved!"
   }
 }

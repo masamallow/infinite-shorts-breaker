@@ -10,5 +10,11 @@
   },
   "toast_view_exceeded": {
     "message": "Límite de visualización superado"
+  },
+  "popup_validation_error": {
+    "message": "Introduce números enteros positivos válidos."
+  },
+  "popup_settings_saved": {
+    "message": "¡Configuración guardada!"
   }
 }
