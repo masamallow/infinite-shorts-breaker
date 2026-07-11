@@ -24,15 +24,6 @@
 
 * **release:** include hidden files when uploading .output artifact ([#38](https://github.com/masamallow/infinite-shorts-breaker/issues/38)) ([9b76b35](https://github.com/masamallow/infinite-shorts-breaker/commit/9b76b3510941f52783b746d2e2173ca0f4c60e93))
 
-
-### 🧹 Miscellaneous Chores
-
-* **deps:** update actions/checkout action to v7 ([#45](https://github.com/masamallow/infinite-shorts-breaker/issues/45)) ([7982e99](https://github.com/masamallow/infinite-shorts-breaker/commit/7982e9921739b87ce92cba98504ba6325b70334c))
-* **deps:** update dependency @biomejs/biome to v2.5.1 ([#43](https://github.com/masamallow/infinite-shorts-breaker/issues/43)) ([273a0db](https://github.com/masamallow/infinite-shorts-breaker/commit/273a0db3fb58191b642d6a4dc61c2a218c8f61c3))
-* **deps:** update dependency @types/chrome to v0.2.0 ([#42](https://github.com/masamallow/infinite-shorts-breaker/issues/42)) ([2adb10a](https://github.com/masamallow/infinite-shorts-breaker/commit/2adb10ac12e7ba48e14702e8cdeeced2a59871dc))
-* **deps:** update dependency wxt to v0.20.27 ([#44](https://github.com/masamallow/infinite-shorts-breaker/issues/44)) ([facdcb5](https://github.com/masamallow/infinite-shorts-breaker/commit/facdcb5d5ea966301b00b795fe817bf45a97f9d3))
-* remove unnecessary comment in cleanup function ([#30](https://github.com/masamallow/infinite-shorts-breaker/issues/30)) ([42514f9](https://github.com/masamallow/infinite-shorts-breaker/commit/42514f99a42b38fdb4e0f2084204a2e56a587903))
-
 ## [0.2.0](https://github.com/masamallow/infinite-shorts-breaker/compare/v0.1.2...v0.2.0) (2026-05-07)
 
 
