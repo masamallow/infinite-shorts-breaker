@@ -10,5 +10,29 @@
   },
   "toast_view_exceeded": {
     "message": "視聴回数制限を超えました"
+  },
+  "popup_validation_error": {
+    "message": "有効な正の整数を入力してください。"
+  },
+  "popup_settings_saved": {
+    "message": "設定を保存しました。"
+  },
+  "popup_title": {
+    "message": "Infinite Shorts Breaker"
+  },
+  "popup_view_limit_label": {
+    "message": "視聴回数制限"
+  },
+  "popup_views_unit": {
+    "message": "回"
+  },
+  "popup_time_limit_label": {
+    "message": "視聴時間制限"
+  },
+  "popup_minutes_unit": {
+    "message": "分"
+  },
+  "popup_save_button": {
+    "message": "保存"
   }
 }

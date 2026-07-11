@@ -9,23 +9,23 @@
   <main class="app">
     <header class="app__header">
       <img src="/infinite-shorts-breaker.svg" alt="" width="32" height="32" />
-      <h1>Infinite Shorts Breaker</h1>
+      <h1 id="popupTitle">Infinite Shorts Breaker</h1>
     </header>
 
     <form id="settings" class="card" novalidate>
       <label class="field">
-        <span class="field__label">View limit</span>
+        <span id="viewLimitLabel" class="field__label">View limit</span>
         <span class="field__control">
           <input id="viewLimit" type="number" min="1" step="1" value="5" />
-          <span class="field__suffix">views</span>
+          <span id="viewsUnit" class="field__suffix">views</span>
         </span>
       </label>
 
       <label class="field">
-        <span class="field__label">Time limit</span>
+        <span id="timeLimitLabel" class="field__label">Time limit</span>
         <span class="field__control">
           <input id="timeLimit" type="number" min="1" step="1" value="5" />
-          <span class="field__suffix">minutes</span>
+          <span id="minutesUnit" class="field__suffix">minutes</span>
         </span>
       </label>
 

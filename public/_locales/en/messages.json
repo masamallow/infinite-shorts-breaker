@@ -10,5 +10,29 @@
   },
   "toast_view_exceeded": {
     "message": "View limit exceeded"
+  },
+  "popup_validation_error": {
+    "message": "Please enter valid positive integers."
+  },
+  "popup_settings_saved": {
+    "message": "Settings saved!"
+  },
+  "popup_title": {
+    "message": "Infinite Shorts Breaker"
+  },
+  "popup_view_limit_label": {
+    "message": "View limit"
+  },
+  "popup_views_unit": {
+    "message": "views"
+  },
+  "popup_time_limit_label": {
+    "message": "Time limit"
+  },
+  "popup_minutes_unit": {
+    "message": "minutes"
+  },
+  "popup_save_button": {
+    "message": "Save"
   }
 }
