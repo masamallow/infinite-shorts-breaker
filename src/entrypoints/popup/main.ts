@@ -28,8 +28,8 @@ settingsForm.addEventListener("submit", async (event) => {
 	const timeLimit = Number(timeLimitInput.value);
 
 	if (
-		!Number.isFinite(viewLimit) ||
-		!Number.isFinite(timeLimit) ||
+		!Number.isInteger(viewLimit) ||
+		!Number.isInteger(timeLimit) ||
 		viewLimit < 1 ||
 		timeLimit < 1
 	) {
