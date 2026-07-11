@@ -1,31 +1,24 @@
-:host {
-	--toast-padding: 25px;
-	--toast-radius: 2px;
-	--toast-text-color: #ffffff;
-	--toast-bg-from: #73a5ff;
-	--toast-bg-to: #5477f5;
-	--toast-shadow:
-		0 3px 6px -1px rgba(0, 0, 0, 0.12), 0 10px 36px -4px rgba(77, 96, 232, 0.3);
-	--toast-max-width: calc(50% - 20px);
-	--toast-font-size: x-large;
-	--toast-offset: 15px;
-}
+@import "../../styles/tokens.css";
 
 .toast {
 	/* The Popover API moves this element to the top layer, so no z-index is needed. */
 	position: fixed;
-	top: var(--toast-offset);
-	right: var(--toast-offset);
+	top: var(--space-4);
+	right: var(--space-4);
 	inset-block-end: auto; /* override popover UA `inset: 0` */
 	inset-inline-start: auto; /* override popover UA `inset: 0` */
 	margin: 0; /* override popover UA `margin: auto` */
 	border: none; /* override popover UA `border: solid` */
-	padding: var(--toast-padding);
-	border-radius: var(--toast-radius);
-	color: var(--toast-text-color);
-	background: linear-gradient(135deg, var(--toast-bg-from), var(--toast-bg-to));
-	box-shadow: var(--toast-shadow);
-	max-width: var(--toast-max-width);
-	font-size: var(--toast-font-size);
+	padding: var(--space-5);
+	border-radius: var(--radius-sm);
+	color: var(--color-toast-fg);
+	background: linear-gradient(
+		135deg,
+		var(--color-toast-bg-from),
+		var(--color-toast-bg-to)
+	);
+	box-shadow: var(--shadow-toast);
+	max-width: calc(50% - 20px);
+	font-size: var(--font-size-lg);
 	pointer-events: none;
 }
