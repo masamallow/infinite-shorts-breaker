@@ -37,10 +37,10 @@ git clone https://github.com/masamallow/infinite-shorts-breaker.git
 cd infinite-shorts-breaker
 
 # Install dependencies
-npm install
+pnpm install
 
 # Build for Chrome
-npm run build
+pnpm build
 ```
 
 Load the extension from `.output/chrome-mv3` in Chrome's developer mode.
