@@ -97,15 +97,14 @@ describe("popup", () => {
 	});
 
 	it.each([
-		"0",
-		"2.5",
-		"",
-		"abc",
-	])("rejects the invalid input %j and does not save", async (invalid) => {
+		{ case: "an invalid viewLimit", viewLimit: "0", timeLimit: "2" },
+		{ case: "an invalid timeLimit", viewLimit: "3", timeLimit: "2.5" },
+		{ case: "both inputs invalid", viewLimit: "", timeLimit: "abc" },
+	])("rejects $case and does not save", async ({ viewLimit, timeLimit }) => {
 		await loadPopup();
 
-		el<HTMLInputElement>("viewLimit").value = invalid;
-		el<HTMLInputElement>("timeLimit").value = "2";
+		el<HTMLInputElement>("viewLimit").value = viewLimit;
+		el<HTMLInputElement>("timeLimit").value = timeLimit;
 		submitForm();
 
 		await vi.waitFor(() => {
@@ -114,6 +113,8 @@ describe("popup", () => {
 			);
 			expect(el("message").dataset.state).toBe("error");
 		});
-		expect(await fakeBrowser.storage.local.get("viewLimit")).toEqual({});
+		expect(
+			await fakeBrowser.storage.local.get(["viewLimit", "timeLimit"]),
+		).toEqual({});
 	});
 });
