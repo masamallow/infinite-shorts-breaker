@@ -1,17 +1,15 @@
+import {
+	isShortsPath,
+	isTimeLimitExceeded,
+	isViewLimitExceeded,
+} from "@/utils/limits";
+import {
+	createPendingToast,
+	isPendingToast,
+	isPendingToastExpired,
+} from "@/utils/pending-toast";
+import { DEFAULT_SETTINGS, loadSettings } from "@/utils/settings";
 import "./content/style.css";
-
-const PENDING_TOAST_TTL_MS = 5 * 60_000;
-
-type PendingToast = { reason: string; expiresAt: number };
-
-function isPendingToast(v: unknown): v is PendingToast {
-	return (
-		typeof v === "object" &&
-		v !== null &&
-		typeof (v as { reason?: unknown }).reason === "string" &&
-		typeof (v as { expiresAt?: unknown }).expiresAt === "number"
-	);
-}
 
 export default defineContentScript({
 	matches: ["*://www.youtube.com/*"],
@@ -21,18 +19,14 @@ export default defineContentScript({
 		console.log("[ContentScript] YouTube Shorts content script loaded.");
 
 		let started = false;
-		let maxViewLimit = 5;
-		let maxTimeLimitInMinutes = 5;
+		let maxViewLimit = DEFAULT_SETTINGS.viewLimit;
+		let maxTimeLimitInMinutes = DEFAULT_SETTINGS.timeLimit;
 		let viewCount = 0;
 		let timerId: number | undefined;
 
-		chrome.storage.local.get(["viewLimit", "timeLimit"], (res) => {
-			if (typeof res.viewLimit === "number") {
-				maxViewLimit = res.viewLimit;
-			}
-			if (typeof res.timeLimit === "number") {
-				maxTimeLimitInMinutes = res.timeLimit;
-			}
+		loadSettings().then((settings) => {
+			maxViewLimit = settings.viewLimit;
+			maxTimeLimitInMinutes = settings.timeLimit;
 		});
 
 		consumePendingToast();
@@ -67,10 +61,10 @@ export default defineContentScript({
 					}),
 				);
 			}
-			const { pendingToast } = await chrome.storage.local.get("pendingToast");
+			const { pendingToast } = await browser.storage.local.get("pendingToast");
 			if (pendingToast === undefined) return;
-			await chrome.storage.local.remove("pendingToast");
-			if (!isPendingToast(pendingToast) || pendingToast.expiresAt < Date.now())
+			await browser.storage.local.remove("pendingToast");
+			if (!isPendingToast(pendingToast) || isPendingToastExpired(pendingToast))
 				return;
 			await showToast(`InfiniteShortsBreaker: ${pendingToast.reason}`);
 		}
@@ -78,14 +72,14 @@ export default defineContentScript({
 		function startTimer() {
 			const start = Date.now();
 			timerId = ctx.setInterval(() => {
-				if (Date.now() - start >= maxTimeLimitInMinutes * 60_000) {
+				if (isTimeLimitExceeded(start, Date.now(), maxTimeLimitInMinutes)) {
 					triggerStop(browser.i18n.getMessage("toast_time_exceeded"));
 				}
 			}, 10_000);
 		}
 
 		function onNavigate() {
-			if (!location.pathname.startsWith("/shorts/")) {
+			if (!isShortsPath(location.pathname)) {
 				// Cleanup when transition to other than Shorts
 				cleanup();
 				return;
@@ -98,14 +92,14 @@ export default defineContentScript({
 
 			viewCount++;
 			console.log("[Limiter] viewCount =", viewCount);
-			if (viewCount > maxViewLimit) {
+			if (isViewLimitExceeded(viewCount, maxViewLimit)) {
 				triggerStop(browser.i18n.getMessage("toast_view_exceeded"));
 			}
 		}
 
 		async function triggerStop(reason: string) {
-			await chrome.storage.local.set({
-				pendingToast: { reason, expiresAt: Date.now() + PENDING_TOAST_TTL_MS },
+			await browser.storage.local.set({
+				pendingToast: createPendingToast(reason),
 			});
 			cleanup();
 			window.location.href = "https://www.youtube.com/";

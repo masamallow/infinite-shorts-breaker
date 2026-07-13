@@ -16,6 +16,9 @@
 		"zip": "wxt zip",
 		"zip:firefox": "wxt zip -b firefox",
 		"compile": "tsc --noEmit",
+		"test": "vitest run",
+		"test:watch": "vitest",
+		"test:coverage": "vitest run --coverage",
 		"fmt": "biome format --write",
 		"lint": "biome lint",
 		"check": "biome check",
@@ -26,7 +29,10 @@
 	"devDependencies": {
 		"@biomejs/biome": "2.5.1",
 		"@types/chrome": "0.2.0",
+		"@vitest/coverage-v8": "4.1.9",
+		"happy-dom": "20.10.6",
 		"typescript": "6.0.3",
+		"vitest": "4.1.9",
 		"wxt": "0.20.27"
 	}
 }
