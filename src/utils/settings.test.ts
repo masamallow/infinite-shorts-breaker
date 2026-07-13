@@ -31,6 +31,38 @@ describe("loadSettings", () => {
 
 		expect(await loadSettings()).toEqual(DEFAULT_SETTINGS);
 	});
+
+	it.each([
+		{
+			case: "NaN view limit",
+			stored: { viewLimit: Number.NaN, timeLimit: 3 },
+			expected: { viewLimit: DEFAULT_SETTINGS.viewLimit, timeLimit: 3 },
+		},
+		{
+			case: "negative view limit",
+			stored: { viewLimit: -1, timeLimit: 3 },
+			expected: { viewLimit: DEFAULT_SETTINGS.viewLimit, timeLimit: 3 },
+		},
+		{
+			case: "fractional time limit",
+			stored: { viewLimit: 3, timeLimit: 1.5 },
+			expected: { viewLimit: 3, timeLimit: DEFAULT_SETTINGS.timeLimit },
+		},
+		{
+			case: "infinite time limit",
+			stored: { viewLimit: 3, timeLimit: Number.POSITIVE_INFINITY },
+			expected: { viewLimit: 3, timeLimit: DEFAULT_SETTINGS.timeLimit },
+		},
+		{
+			case: "zero limits",
+			stored: { viewLimit: 0, timeLimit: 0 },
+			expected: DEFAULT_SETTINGS,
+		},
+	])("falls back for $case", async ({ stored, expected }) => {
+		await fakeBrowser.storage.local.set(stored);
+
+		expect(await loadSettings()).toEqual(expected);
+	});
 });
 
 describe("saveSettings", () => {

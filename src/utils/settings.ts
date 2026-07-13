@@ -11,17 +11,19 @@ export const DEFAULT_SETTINGS: Settings = {
 	timeLimit: 5,
 };
 
+function isPositiveInteger(value: unknown): value is number {
+	return typeof value === "number" && Number.isInteger(value) && value >= 1;
+}
+
 export async function loadSettings(): Promise<Settings> {
 	const stored = await browser.storage.local.get(["viewLimit", "timeLimit"]);
 	return {
-		viewLimit:
-			typeof stored.viewLimit === "number"
-				? stored.viewLimit
-				: DEFAULT_SETTINGS.viewLimit,
-		timeLimit:
-			typeof stored.timeLimit === "number"
-				? stored.timeLimit
-				: DEFAULT_SETTINGS.timeLimit,
+		viewLimit: isPositiveInteger(stored.viewLimit)
+			? stored.viewLimit
+			: DEFAULT_SETTINGS.viewLimit,
+		timeLimit: isPositiveInteger(stored.timeLimit)
+			? stored.timeLimit
+			: DEFAULT_SETTINGS.timeLimit,
 	};
 }
 
