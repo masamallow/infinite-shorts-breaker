@@ -1,3 +1,5 @@
+import { loadSettings, saveSettings } from "@/utils/settings";
+import { parsePositiveInteger } from "@/utils/validation";
 import "./style.css";
 
 console.log("[Popup] loaded");
@@ -62,32 +64,23 @@ function setMessage(text: string, state: "success" | "error") {
 	messageEl.dataset.state = state;
 }
 
-chrome.storage.local.get(["viewLimit", "timeLimit"], (result) => {
-	if (result.viewLimit !== undefined) {
-		viewLimitInput.value = String(result.viewLimit);
-	}
-	if (result.timeLimit !== undefined) {
-		timeLimitInput.value = String(result.timeLimit);
-	}
+loadSettings().then(({ viewLimit, timeLimit }) => {
+	viewLimitInput.value = String(viewLimit);
+	timeLimitInput.value = String(timeLimit);
 });
 
 settingsForm.addEventListener("submit", async (event) => {
 	event.preventDefault();
 
-	const viewLimit = Number(viewLimitInput.value);
-	const timeLimit = Number(timeLimitInput.value);
+	const viewLimit = parsePositiveInteger(viewLimitInput.value);
+	const timeLimit = parsePositiveInteger(timeLimitInput.value);
 
-	if (
-		!Number.isInteger(viewLimit) ||
-		!Number.isInteger(timeLimit) ||
-		viewLimit < 1 ||
-		timeLimit < 1
-	) {
+	if (viewLimit === null || timeLimit === null) {
 		setMessage(validationErrorMessage, "error");
 		return;
 	}
 
-	await chrome.storage.local.set({ viewLimit, timeLimit });
+	await saveSettings({ viewLimit, timeLimit });
 
 	console.log("[Popup] Settings saved", { viewLimit, timeLimit });
 	setMessage(settingsSavedMessage, "success");
