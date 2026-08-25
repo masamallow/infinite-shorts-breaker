@@ -11,6 +11,13 @@
 			"description": "Group GitHub Actions updates into a single PR",
 			"matchManagers": ["github-actions"],
 			"groupName": "github-actions"
+		},
+		{
+			"description": "Automerge pnpm (packageManager) updates once CI is green",
+			"matchPackageNames": ["pnpm"],
+			"automerge": true,
+			"automergeStrategy": "squash",
+			"platformAutomerge": false
 		}
 	],
 	"timezone": "Asia/Tokyo",
