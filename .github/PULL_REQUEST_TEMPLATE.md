@@ -10,7 +10,7 @@
 <!-- Brief bullet list of notable changes. -->
 
 ## Testing
-- [ ] `npm run compile`
+- [ ] `pnpm compile`
 - [ ] Manual check in Chrome (steps):
 
 ## Screenshots
