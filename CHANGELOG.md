@@ -1,5 +1,30 @@
 # Changelog
 
+## [0.3.1](https://github.com/masamallow/infinite-shorts-breaker/compare/v0.3.0...v0.3.1) (2026-09-06)
+
+
+### 📝 Documentation
+
+* **pr-template:** use pnpm in the testing checklist ([#70](https://github.com/masamallow/infinite-shorts-breaker/issues/70)) ([af976b8](https://github.com/masamallow/infinite-shorts-breaker/commit/af976b864f278fb0029263120d3fc179b4723182))
+
+
+### 🤖 Continuous Integration
+
+* **renovate:** automerge pnpm packageManager updates ([#69](https://github.com/masamallow/infinite-shorts-breaker/issues/69)) ([97a848d](https://github.com/masamallow/infinite-shorts-breaker/commit/97a848d1a3b9ae6b4a286ab837c618cbb2102481))
+
+
+### 🧹 Miscellaneous Chores
+
+* **deps:** update actions/setup-node action to v7 ([#64](https://github.com/masamallow/infinite-shorts-breaker/issues/64)) ([5f538bc](https://github.com/masamallow/infinite-shorts-breaker/commit/5f538bcfb44dfdde9804d4ebbcd2b98052bdd2f5))
+* **deps:** update dependency @types/chrome to v0.2.2 ([#48](https://github.com/masamallow/infinite-shorts-breaker/issues/48)) ([d89a66f](https://github.com/masamallow/infinite-shorts-breaker/commit/d89a66f6716a03bc2098e147961e4928311ebed2))
+* **deps:** update github-actions ([#39](https://github.com/masamallow/infinite-shorts-breaker/issues/39)) ([7e75d3a](https://github.com/masamallow/infinite-shorts-breaker/commit/7e75d3ae224e8ff408915f9ae8e9519a53fb2b82))
+* **deps:** update pnpm to v11.15.1 ([#61](https://github.com/masamallow/infinite-shorts-breaker/issues/61)) ([a87ba24](https://github.com/masamallow/infinite-shorts-breaker/commit/a87ba24408d533187f01319a0160039c3ac83baa))
+* **deps:** update pnpm to v11.22.0 ([#65](https://github.com/masamallow/infinite-shorts-breaker/issues/65)) ([64782e5](https://github.com/masamallow/infinite-shorts-breaker/commit/64782e5d659796dc3a987c58bbb3a6a98860cbbb))
+* **deps:** update pnpm to v11.24.0 ([#71](https://github.com/masamallow/infinite-shorts-breaker/issues/71)) ([f360e5c](https://github.com/masamallow/infinite-shorts-breaker/commit/f360e5c94f5fc35a2494ef853ffd60998d63fbf3))
+* **deps:** update pnpm to v11.25.0 ([#72](https://github.com/masamallow/infinite-shorts-breaker/issues/72)) ([f275c46](https://github.com/masamallow/infinite-shorts-breaker/commit/f275c462072c89c63305c01d36df5e493ed1cc42))
+* **deps:** update pnpm to v12 ([#73](https://github.com/masamallow/infinite-shorts-breaker/issues/73)) ([ab8610b](https://github.com/masamallow/infinite-shorts-breaker/commit/ab8610b448f2e3a5528685061c3515efc26ea634))
+* **deps:** update pnpm to v12.3.1 ([#74](https://github.com/masamallow/infinite-shorts-breaker/issues/74)) ([a507d8f](https://github.com/masamallow/infinite-shorts-breaker/commit/a507d8f65a3ed6de31a41c0add5cc4fa838b8f1a))
+
 ## [0.3.0](https://github.com/masamallow/infinite-shorts-breaker/compare/v0.2.0...v0.3.0) (2026-07-11)
 
 
