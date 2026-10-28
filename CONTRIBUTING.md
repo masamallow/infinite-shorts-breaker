@@ -42,3 +42,44 @@ This is a personal project and is not accepting external code contributions at t
   ```
 
 - **Hand-editing a release PR**: edits to the release PR's `CHANGELOG.md` can be overwritten by a subsequent `release-please` force-push. If you do hand-edit, merge the PR promptly afterward.
+
+## Dependency Updates
+
+### Release-age cooldown
+
+Renovate and pnpm each hold back releases younger than 7 days (`minimumReleaseAge` in [renovate.json](./renovate.json) and [pnpm-workspace.yaml](./pnpm-workspace.yaml)).  
+The cooldown gives the community time to spot and unpublish compromised releases before they reach this repository.  
+Keep it for every update, including ones you would like sooner; the only exception is a fix for a known vulnerability.
+
+### Before merging a vulnerability fix early
+
+Merge early only when all of these hold; otherwise let the update wait out the cooldown.
+
+- The vulnerability is reachable in this repository.
+  - All dependencies are devDependencies, so check whether the affected code runs during development, tests, or the build, or ends up in the shipped extension.
+- An official advisory (GHSA or the project's own security notice) names this exact version as the fix.
+  - Fake "urgent security fix" releases are a common move after a maintainer account is compromised.
+- If earlier releases carry npm provenance, this one does too, from the same repository and workflow.
+  - A missing attestation or a new publisher is a red flag.
+- The published package contents, not just the Git tag, show no new install scripts, obfuscated code, or unexpected dependencies compared with the previous version.
+
+### Exempting the fix from pnpm's cooldown
+
+Renovate opens vulnerability PRs without waiting (`vulnerabilityAlerts` defaults to `minimumReleaseAge: null`), but pnpm still enforces its own cooldown.  
+Because `minimumReleaseAge` is set explicitly, `minimumReleaseAgeStrict` defaults to `true`, so pnpm refuses to resolve a version younger than 7 days.  
+Renovate therefore adds the fixed version to `minimumReleaseAgeExclude` in the same PR:
+
+```yaml
+minimumReleaseAgeExclude:
+  # Renovate security update: vitest@4.1.11
+  - vitest@4.1.11
+```
+
+1. Review the PR against the checklist above.
+2. Confirm that every `minimumReleaseAgeExclude` entry the PR adds pins an exact version; a bare package name exempts every future release of that package.
+3. Merge once CI passes.
+4. Once the version is more than 7 days old, remove its entry in a follow-up commit.
+   - Renovate leaves the entry in place after the merge.
+   - By then the version satisfies `minimumReleaseAge` on its own, so removing the entry cannot break installs.
+
+If Renovate has not opened a PR, bump the dependency on a branch yourself, add its exact version to `minimumReleaseAgeExclude` with a comment naming the advisory, and follow the same steps.
