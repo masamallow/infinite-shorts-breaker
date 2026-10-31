@@ -13,8 +13,9 @@
 			"groupName": "github-actions"
 		},
 		{
-			"description": "Automerge pnpm (packageManager) updates once CI is green",
+			"description": "Automerge pnpm (packageManager) minor and patch updates once CI is green; majors need a manual merge",
 			"matchPackageNames": ["pnpm"],
+			"matchUpdateTypes": ["minor", "patch"],
 			"automerge": true,
 			"automergeStrategy": "squash",
 			"platformAutomerge": false
