@@ -159,9 +159,9 @@ describe("content script", () => {
 		expect(await getPendingToast()).toBeUndefined();
 
 		// Run the captured onMount to verify the rendered message text.
-		const options = createShadowRootUiMock.mock.calls[0][1];
+		const options = createShadowRootUiMock.mock.calls[0]?.[1];
 		const container = document.createElement("div");
-		options.onMount(container);
+		options?.onMount(container);
 		expect(container.firstElementChild?.textContent).toBe(
 			"InfiniteShortsBreaker: hello",
 		);
