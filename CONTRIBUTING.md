@@ -43,6 +43,12 @@ This is a personal project and is not accepting external code contributions at t
 
 - **Hand-editing a release PR**: edits to the release PR's `CHANGELOG.md` can be overwritten by a subsequent `release-please` force-push. If you do hand-edit, merge the PR promptly afterward.
 
+## Tool Versions
+
+[package.json](./package.json) is the source of truth: `devEngines.runtime` for Node.js and `packageManager` for pnpm.  
+CI reads them through `actions/setup-node` and `pnpm/action-setup`, and [mise.toml](./mise.toml) makes mise read the same fields.  
+Run `mise trust` once after cloning, because mise refuses to load an untrusted file that has a `[settings]` table.
+
 ## Dependency Updates
 
 ### Release-age cooldown

@@ -1,0 +1,4 @@
+# package.json is the source of truth: devEngines.runtime for Node.js, packageManager for pnpm.
+# This list replaces the user-level one, so name every tool here.
+[settings]
+idiomatic_version_file_enable_tools = ["node", "pnpm"]
