@@ -1,9 +1,4 @@
 allowBuilds:
   esbuild: true
   spawn-sync: false
-minimumReleaseAge: 10080
-minimumReleaseAgeExclude:
-  # Renovate security update: vitest@4.1.11
-  - vitest@4.1.11
-  # Renovate security update: happy-dom@21.0.4
-  - happy-dom@21.0.4
+minimumReleaseAge: 10080 # = 7 day x 24 x 60 min/day
