@@ -4,9 +4,19 @@
 	"minimumReleaseAge": "7 days",
 	"osvVulnerabilityAlerts": true,
 	"vulnerabilityAlerts": {
+		"automerge": false,
 		"labels": ["security"]
 	},
+	"lockFileMaintenance": {
+		"minimumReleaseAge": null
+	},
 	"packageRules": [
+		{
+			"description": "Align the 3-day npm default from config:best-practices with pnpm's 7-day minimumReleaseAge",
+			"matchDatasources": ["npm"],
+			"matchUpdateTypes": ["major", "minor", "patch"],
+			"minimumReleaseAge": "7 days"
+		},
 		{
 			"description": "Group GitHub Actions updates into a single PR",
 			"matchManagers": ["github-actions"],

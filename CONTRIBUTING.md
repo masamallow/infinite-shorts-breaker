@@ -57,6 +57,15 @@ Renovate and pnpm each hold back releases younger than 7 days (`minimumReleaseAg
 The cooldown gives the community time to spot and unpublish compromised releases before they reach this repository.  
 Keep it for every update, including ones you would like sooner; the only exception is a fix for a known vulnerability.
 
+- Keep the two values equal.
+  - If Renovate's is shorter, it proposes versions that pnpm rejects with `ERR_PNPM_NO_MATURE_MATCHING_VERSION`, and the PR stays red without a lockfile update.
+- For npm, Renovate's value lives in a `packageRules` entry.
+  - `config:best-practices` sets 3 days for npm through a package rule, and package rules outrank the top-level `minimumReleaseAge`.
+- Lock file maintenance PRs rely on pnpm's cooldown alone.
+  - They carry no release timestamp, so Renovate's check is turned off for them; otherwise it would stay pending forever.
+- Vulnerability PRs always need a manual merge (`vulnerabilityAlerts.automerge: false`).
+  - They skip Renovate's cooldown, so the pnpm automerge rule must not apply to them.
+
 ### Before merging a vulnerability fix early
 
 Merge early only when all of these hold; otherwise let the update wait out the cooldown.
