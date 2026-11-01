@@ -1,3 +1,4 @@
+import { debugLog } from "@/utils/debug-log";
 import {
 	isShortsPath,
 	isTimeLimitExceeded,
@@ -16,7 +17,7 @@ export default defineContentScript({
 	runAt: "document_start",
 	cssInjectionMode: "ui",
 	async main(ctx) {
-		console.log("[ContentScript] YouTube Shorts content script loaded.");
+		debugLog("[ContentScript] YouTube Shorts content script loaded.");
 
 		let started = false;
 		let maxViewLimit = DEFAULT_SETTINGS.viewLimit;
@@ -91,7 +92,7 @@ export default defineContentScript({
 			}
 
 			viewCount++;
-			console.log("[Limiter] viewCount =", viewCount);
+			debugLog("[Limiter] viewCount =", viewCount);
 			if (isViewLimitExceeded(viewCount, maxViewLimit)) {
 				triggerStop(browser.i18n.getMessage("toast_view_exceeded"));
 			}
@@ -106,7 +107,7 @@ export default defineContentScript({
 		}
 
 		function cleanup() {
-			console.log("[Limiter] cleanup");
+			debugLog("[Limiter] cleanup");
 			if (timerId !== undefined) {
 				clearInterval(timerId);
 				timerId = undefined;

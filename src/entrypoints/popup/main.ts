@@ -1,8 +1,9 @@
+import { debugLog } from "@/utils/debug-log";
 import { loadSettings, saveSettings } from "@/utils/settings";
 import { parsePositiveInteger } from "@/utils/validation";
 import "./style.css";
 
-console.log("[Popup] loaded");
+debugLog("[Popup] loaded");
 
 const viewLimitInput = document.getElementById("viewLimit") as HTMLInputElement;
 const timeLimitInput = document.getElementById("timeLimit") as HTMLInputElement;
@@ -82,6 +83,6 @@ settingsForm.addEventListener("submit", async (event) => {
 
 	await saveSettings({ viewLimit, timeLimit });
 
-	console.log("[Popup] Settings saved", { viewLimit, timeLimit });
+	debugLog("[Popup] Settings saved", { viewLimit, timeLimit });
 	setMessage(settingsSavedMessage, "success");
 });
