@@ -1,5 +1,31 @@
 # Changelog
 
+## [0.3.1](https://github.com/masamallow/infinite-shorts-breaker/compare/v0.3.0...v0.3.1) (2026-11-01)
+
+
+### 📝 Documentation
+
+* **contributing:** document the release-age cooldown for dependencies ([678dc3e](https://github.com/masamallow/infinite-shorts-breaker/commit/678dc3eb62a0f74542990f519b7e9561bd0e5dfb))
+* **pr-template:** use pnpm in the testing checklist ([#70](https://github.com/masamallow/infinite-shorts-breaker/issues/70)) ([af976b8](https://github.com/masamallow/infinite-shorts-breaker/commit/af976b864f278fb0029263120d3fc179b4723182))
+
+
+### 🛠️ Build System
+
+* **deps:** upgrade wxt to 0.21.4 ([#91](https://github.com/masamallow/infinite-shorts-breaker/issues/91)) ([9ec642b](https://github.com/masamallow/infinite-shorts-breaker/commit/9ec642b7e47f2d8ebcaf8dc8e9327daa8273e4d4))
+* make package.json the source of truth for tool versions ([4ef0ed4](https://github.com/masamallow/infinite-shorts-breaker/commit/4ef0ed4b0dd46bc6cca22ca3aec8c67a09b6b429))
+
+
+### 🤖 Continuous Integration
+
+* **renovate:** align release-age checks with the pnpm cooldown ([086b0ab](https://github.com/masamallow/infinite-shorts-breaker/commit/086b0ab6ddf288a0fbdbb86d990a7da911c6dd50))
+* **renovate:** automerge pnpm packageManager updates ([#69](https://github.com/masamallow/infinite-shorts-breaker/issues/69)) ([97a848d](https://github.com/masamallow/infinite-shorts-breaker/commit/97a848d1a3b9ae6b4a286ab837c618cbb2102481))
+* **renovate:** limit pnpm automerge to minor and patch updates ([e4cab89](https://github.com/masamallow/infinite-shorts-breaker/commit/e4cab892b8879f7ba605b86145a8557424979d0c))
+
+
+### ♻️ Code Refactoring
+
+* gate debug logs on import.meta.env.DEV ([#97](https://github.com/masamallow/infinite-shorts-breaker/issues/97)) ([55222f3](https://github.com/masamallow/infinite-shorts-breaker/commit/55222f34ec41c130a2d2e4bfc190dbcd87342977))
+
 ## [0.3.0](https://github.com/masamallow/infinite-shorts-breaker/compare/v0.2.0...v0.3.0) (2026-07-11)
 
 
