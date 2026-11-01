@@ -28,6 +28,7 @@
 		"check": "biome check",
 		"check:fix": "biome check --write",
 		"check:ci": "biome ci",
+		"check:console": "node scripts/check-console-stripped.mjs",
 		"postinstall": "wxt prepare"
 	},
 	"devDependencies": {
