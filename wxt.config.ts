@@ -22,8 +22,14 @@ export default defineConfig({
 	},
 	srcDir: "src",
 	vite: () => ({
-		esbuild: {
-			drop: ["console", "debugger"],
+		build: {
+			rolldownOptions: {
+				output: {
+					minify: {
+						compress: { dropConsole: true, dropDebugger: true },
+					},
+				},
+			},
 		},
 	}),
 });
