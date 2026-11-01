@@ -21,9 +21,4 @@ export default defineConfig({
 		},
 	},
 	srcDir: "src",
-	vite: () => ({
-		esbuild: {
-			drop: ["console", "debugger"],
-		},
-	}),
 });
