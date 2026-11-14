@@ -31,7 +31,7 @@
 		"postinstall": "wxt prepare"
 	},
 	"devDependencies": {
-		"@biomejs/biome": "2.6.3",
+		"@biomejs/biome": "2.6.6",
 		"@types/chrome": "0.3.6",
 		"@vitest/coverage-v8": "5.0.5",
 		"happy-dom": "21.0.4",
