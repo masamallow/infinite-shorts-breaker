@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.3.2](https://github.com/masamallow/infinite-shorts-breaker/compare/v0.3.1...v0.3.2) (2026-11-14)
+
+
+### 🧹 Miscellaneous Chores
+
+* **deps:** update pnpm to v12.17.0 ([#100](https://github.com/masamallow/infinite-shorts-breaker/issues/100)) ([2615dd9](https://github.com/masamallow/infinite-shorts-breaker/commit/2615dd9f74d382a06859f42b09631717d5c13129))
+* **deps:** update pnpm to v12.18.0 ([#104](https://github.com/masamallow/infinite-shorts-breaker/issues/104)) ([c7e387a](https://github.com/masamallow/infinite-shorts-breaker/commit/c7e387af437f27b2d251c2fd5cfed8ef1b543427))
+
 ## [0.3.1](https://github.com/masamallow/infinite-shorts-breaker/compare/v0.3.0...v0.3.1) (2026-11-01)
 
 
